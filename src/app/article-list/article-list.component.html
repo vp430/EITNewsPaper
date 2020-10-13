@@ -1,0 +1,7 @@
+<ng-container *ngIf = "articles$|async as articles">
+    <div *ngFor="let article of articles">
+        <p>
+            {{ article }}
+        </p>
+    </div>
+</ng-container>
