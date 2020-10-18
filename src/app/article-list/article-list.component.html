@@ -1,7 +1,22 @@
 <ng-container *ngIf = "articles$|async as articles">
     <div *ngFor="let article of articles">
         <p>
-            {{ article }}
+            ID: {{ article.id }}
+        </p>
+        <p>
+            Abstract: {{article.abstract}}
+        </p>
+        <p>
+            Subtitle: {{article.subtitle}}
+        </p>
+        <p>
+            Category: {{article.category}}
+        </p>
+        <p>
+            Title: {{article.title}}
+        </p>
+        <p>
+            Update: {{article.update_date}}
         </p>
     </div>
 </ng-container>

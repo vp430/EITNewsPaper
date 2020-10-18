@@ -10,6 +10,7 @@ import { ArticleDetailsComponent } from './article-details/article-details.compo
 import { ArticleEditionComponent } from './article-edition/article-edition.component';
 import { ArticleListComponent } from './article-list/article-list.component';
 import { LoginComponent } from './login/login.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -29,8 +30,12 @@ import { LoginComponent } from './login/login.component';
       },
       {
         path: 'details', component: ArticleDetailsComponent
+      },
+      {
+        path: 'login', component: LoginComponent
       }
-    ])
+    ]),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

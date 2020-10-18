@@ -17,6 +17,11 @@ export class ArticleListComponent implements OnInit {
   ngOnInit(): void {
     console.log('hello');
     this.articles$ = this.newsService.getArticles();
+  /*  this.http.post<any>('http://sanger.dia.fi.upm.es/pui-rest-news/login', 
+    { username: 'us_2_2', passwd: '2422' }).subscribe(data => 
+      {
+      this.postId = data.id;
+      }*/
   }
 
 }

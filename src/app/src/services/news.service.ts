@@ -18,7 +18,7 @@ export class NewsService {
 
   // Set the corresponding APIKEY accordig to the received by email
   private APIKEY: string;
-  private APIKEY_ANON = '2422';
+  private APIKEY_ANON = 'DEV_TEAM_2422';
 
   private httpOptions = {
     headers: new HttpHeaders({
