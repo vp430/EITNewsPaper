@@ -28,15 +28,11 @@ export class LoginService {
   }
 
   login(name: string, pwd: string): Observable<User> {
-    const usereq = new HttpParams()
-      .set('username', name)
-      .set('passwd', pwd);
-
-    return this.http.post<User>(this.loginUrl, usereq).pipe(
-      tap(user => {
-        this.user = user;
-      })
-    );
+    const reqBody = {
+      username: name,
+      passwd: pwd
+    };
+    return this.http.post<User>(this.loginUrl, reqBody);
   }
 
   getUser() {

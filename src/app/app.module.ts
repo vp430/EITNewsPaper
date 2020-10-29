@@ -11,6 +11,9 @@ import { ArticleEditionComponent } from './article-edition/article-edition.compo
 import { ArticleListComponent } from './article-list/article-list.component';
 import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import { MatButtonModule, MatCardModule,
+// MatMenuModule, MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule } from '@angular/material';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -27,6 +30,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     RouterModule.forRoot([
       {
         path: 'list', component: ArticleListComponent
+      },
+      {
+      path: '', redirectTo: 'list', pathMatch: 'full'
       },
       {
         path: 'details', component: ArticleDetailsComponent
