@@ -24,6 +24,7 @@ import { NationalComponent } from './national/national.component';
 import { InternationalComponent } from './international/international.component';
 import { TechnologyComponent } from './technology/technology.component';
 import { EconomyComponent } from './economy/economy.component';
+import { ArticleCreateComponent } from './article-create/article-create.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { EconomyComponent } from './economy/economy.component';
     NationalComponent,
     InternationalComponent,
     TechnologyComponent,
-    EconomyComponent
+    EconomyComponent,
+    ArticleCreateComponent
   ],
   imports: [
     BrowserModule,

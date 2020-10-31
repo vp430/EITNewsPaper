@@ -11,16 +11,14 @@
     <div class="form-group">
         <input type="text" class="form-control" ngModel name="body" placeholder="Enter Body">
     </div>
-   <div class="form-group">
-        <label>Image input</label>
-        <input type="file" (change) = "fileChangeEvent($event)" class="form-control-file" 
-        ngModel name="image_data">
+    <!--  <div class="form-group">
+
+        <input type="file" class="form-control-file" 
+        ngModel name="thumbnail_image">
     </div>    
-  
-    <button type="submit" class="btn btn-primary">Edit</button>
+  -->
+  <button type="button" class="btn btn-primary" (click)="createArt(newsa = article)">Create</button>
 </form>
-
-
 
 <div class="test">
     <ng-container *ngIf="article$|async as article">

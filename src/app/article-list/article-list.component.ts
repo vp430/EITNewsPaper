@@ -17,7 +17,15 @@ export class ArticleListComponent implements OnInit {
   subtitle: any;
   loggedinUser: string;
   article$: Observable<Article>;
-  newsa: Article;
+  newsa: Article = {
+    abstract: '',
+    subtitle: '',
+    update_date: '',
+    category: '',
+    title: '',
+    thumbnail_image: '',
+    thumbnail_media_type: ''
+  };
 
   constructor(private newsService: NewsService,
               private router: Router) { }
@@ -35,14 +43,10 @@ export class ArticleListComponent implements OnInit {
 
   updateArt(article){
     console.log('article id is ' + article.id);
-    article.title = 'Natalia is the best';
-    this.newsService.updateArticle(article).subscribe(data => {
-      console.log('article updated');
-      console.log(data);
-    });
-  //  const artud = article.id;
+  //  article.title = 'Natalia is the best';
+    const artud = article.id;
    // localStorage.setItem('artud', artud);
-   // this.router.navigateByUrl('/edit');
+    this.router.navigate(['/edit'],{queryParams: {articleId: artud}});
   }
 
   getArt(article) {
@@ -64,15 +68,22 @@ export class ArticleListComponent implements OnInit {
 
   createArt() {
     console.log('Creatiion Test');
-    this.newsa.id = 654;
-    this.newsa.title = 'Boom Boom';
-    this.newsa.subtitle = 'Testing';
-    this.newsa.abstract = 'adaudga';
-    this.newsa.category = 'Technology';
-    console.log(this.newsa);
+   /* this.newsa = {
+      abstract: 'German Beer is Awesome',
+      subtitle: 'You da bomb',
+      update_date: '',
+      category: 'Technology',
+      title: 'Nats is Awesome',
+      image_data: '',
+      image_media_type: '',
+      body: ''
+    };
+    console.log('New Article is ' + this.newsa);
     this.newsService.createArticle(this.newsa).subscribe(data => {
       console.log('Created');
-    });
+    }); */
+    this.router.navigateByUrl('/edit');
+    
 
   }
   // tslint:disable-next-line: typedef
@@ -80,12 +91,12 @@ export class ArticleListComponent implements OnInit {
     if (this.subtitle === '') {
       this.ngOnInit();
     } else {
-     /* this.articles$ = this.articles$.pipe(
+      this.articles$ = this.articles$.pipe(
         filter( res => {
-          return res.subtitle.match(this.subtitle);
+          return res.article.subtitle.match(this.subtitle);
         })
 
-      ); */
+      );
     }
   }
 
