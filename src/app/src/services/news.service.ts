@@ -60,7 +60,9 @@ export class NewsService {
 
   deleteArticle(article: Article | number): Observable<Article> {
     const id = typeof article === 'number' ? article : article.id;
+    console.log('Deleting article id ' + id);
     const url = `${this.articleUrl}/${id}`;
+    console.log('Url is ' + url);
     return this.http.delete<Article>(url, this.httpOptions);
   }
 

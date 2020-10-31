@@ -7,4 +7,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'EITNewsPaper';
+  loggedinUser: string;
+
+  loggedin() {
+    this.loggedinUser =  localStorage.getItem('token');
+    console.log('Before' + this.loggedinUser);
+    return this.loggedinUser;
+  }
+
+  onLogout() {
+    localStorage.removeItem('token');
+    console.log('After' + this.loggedinUser);
+  }
 }

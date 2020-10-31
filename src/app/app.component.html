@@ -30,9 +30,39 @@
                                     <li class="nav-item dropdown">
                                         <a class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><a routerLink="/sports">Sports</a></a>                                       
                                     </li>
-                                    <li>
+                                    <li *ngIf="!loggedin()">
 										<a data-toggle="modal" data-target="#exampleModal" class="btn btn-outline-danger top-btn"><a routerLink="/login">Login</a></a>
-									</li>
+                                    </li>
+                                  <!--  <li *ngIf="loggedin()">
+                                        <a data-toggle="modal" data-target="#exampleModal" class="btn btn-outline-danger top-btn" 
+                                        (click)="onLogout()">Logout</a>
+                                    </li> 
+                                    <div *ngIf="loggedin()" class="dropdown mr-5" dropdown>
+                                        <a class="dropdown-toggle text-light" dropdownToggle (click)="false">
+                                            Welcome {{loggedinUser}}
+                                        </a>
+                                        <div class="dropdown-menu" *dropdownMenu>
+                                            <a class="dropdown-item">
+                                                <i class="far fa-user-circle">Profile</i>
+                                            </a>
+                                            <a (click)='onLogout()' class="dropdown-item">
+                                                <i class="fas fa-sign-out-alt">Logout</i>
+                                            </a>
+                                        </div>
+                                    </div> -->
+                                    <div *ngIf="loggedin()" class="btn-group" dropdown>
+                                        <button id="button-animated" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+                                                aria-controls="dropdown-animated">
+                                          Welcome {{loggedinUser}} <span class="caret"></span>
+                                        </button>
+                                        <ul id="dropdown-animated" *dropdownMenu class="dropdown-menu"
+                                            role="menu" aria-labelledby="button-animated">
+                                          <li role="menuitem"><a class="dropdown-item" href="#"><i class="fa fa-user" aria-hidden="true"></i> 
+                                            Profile</a></li>
+                                          <li role="menuitem"><a (click)='onLogout()' class="dropdown-item" href="#">
+                                            <i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
+                                        </ul>
+                                      </div>
                                 </ul>
                             </div>
                         </nav>
@@ -41,7 +71,7 @@
             </div>
         </div>
     </div>
- <!-- Log In & Signup -->
+ <!-- Log In & Signup  Had some troubles with jquery 
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -67,5 +97,5 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 <router-outlet></router-outlet>

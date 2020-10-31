@@ -21,20 +21,22 @@
         </p>
     </div>
 </ng-container>
--->
+
 <nav class="navbar">
     <input class="form-control" type="text" name="subtitle" [(ngModel)]= "subtitle" (ngModelChange)="Search()"
     placeholder="Search...">
 </nav>
+-->
 <!-- Natalia theme test-->
+<div *ngIf="loggedin()" class="float-left  p-2"><button type="button" class="btn btn-primary" (click)="createArt()">CREATE</button></div>
 <div class="test">
     <ng-container *ngIf = "articles$|async as articles">
         <div class="row">
             <div class="col-4" *ngFor="let article of articles">
+                <h3>{{article.category}}</h3>
                 <div class="card">
-                    <h5>{{article.category}}</h5>
-                    <p>id: {{article.id}}</p>
-                   <!-- <p>Update Date: {{article.update_date}}</p>--> 
+                   <!-- <p>id: {{article.id}}</p>
+                    <p>Update Date: {{article.update_date}}</p>--> 
                 <img class="card-img-top" [src]="'data:'+ article.thumbnail_media_type + ';base64,' 
                 + article.thumbnail_image">
                     <div class="card-body">
@@ -42,6 +44,11 @@
                         <h5 class="card-title">{{article.subtitle}}</h5>
                         <p class="card-text">{{article.abstract}}</p>
                         <p><i class="fa fa-user pr-2"></i>{{article.id_user}}</p>
+                    </div>
+                    <div *ngIf="loggedin()" class="card-bottom">
+                        <div class="float-right  p-2"><button type="button" class="btn btn-primary" (click)="deleteArt(article)">REMOVE</button></div>
+                        <div class="float-right  p-2"><button type="button" class="btn btn-primary" (click)="updateArt(article)" >EDIT</button></div>
+                        <div class="float-right  p-2"><button type="button" class="btn btn-primary" (click)="getArt(article)">VIEW</button></div>
                     </div>
                 </div>    
             </div>

@@ -12,6 +12,7 @@ import {NewsService} from '../src/services/news.service';
 export class InternationalComponent implements OnInit {
 
   articles$: Observable<Article[]>;
+  subtitle: string;
   constructor(private newsService: NewsService) { }
 
   ngOnInit(): void {
@@ -19,4 +20,16 @@ export class InternationalComponent implements OnInit {
     this.articles$ = this.newsService.getArticles();
   }
 
+  Search() {
+    if (this.subtitle === '') {
+      this.ngOnInit();
+    } else {
+     /* this.articles$ = this.articles$.pipe(
+        filter( res => {
+          return res.subtitle.match(this.subtitle);
+        })
+
+      ); */
+    }
+  }
 }

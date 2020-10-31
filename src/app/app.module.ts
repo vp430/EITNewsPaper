@@ -12,6 +12,7 @@ import { ArticleEditionComponent } from './article-edition/article-edition.compo
 import { ArticleListComponent } from './article-list/article-list.component';
 import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 // import { MatButtonModule, MatCardModule,
 // MatMenuModule, MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule } from '@angular/material';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -70,13 +71,17 @@ import { EconomyComponent } from './economy/economy.component';
       },
       {
         path: 'login', component: LoginComponent
+      },
+      {
+        path: 'edit', component: ArticleEditionComponent
       }
     ]),
     BrowserAnimationsModule,
     Ng2SearchPipeModule,
     OrderModule,
     NgxPaginationModule,
-    FormsModule
+    FormsModule,
+    BsDropdownModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
