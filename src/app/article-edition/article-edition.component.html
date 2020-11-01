@@ -1,4 +1,4 @@
-<form #editform='ngForm' (ngSubmit)="onEdit(editform)" *ngIf="article$|async as article">
+<form #editform='ngForm' (ngSubmit)="onEdit(editform,article)" *ngIf="article$|async as article">
     <div class="form-group">
         <input type="text" class="form-control" ngModel name="title" placeholder="Enter Title">
     </div>
@@ -13,10 +13,17 @@
     </div>
    <div class="form-group">
         <label>Image input</label>
-        <input type="file" (change) = "fileChangeEvent($event)" class="form-control-file" 
+        <input type="file" (change) = "fileChangeEvent($event,article)" class="form-control-file" 
         ngModel name="image_data">
-    </div>    
-  
+    </div>
+    <select (change)="CatChoice($event,article)">
+        <option>Choose a Category</option>
+        <option value="International">International</option>
+        <option value="National">National</option>
+        <option value="Technology">Technology</option>
+        <option value="Sports">Sports</option>
+        <option value="Economy">Economy</option>
+    </select>   
     <button type="submit" class="btn btn-primary">Edit</button>
 </form>
 

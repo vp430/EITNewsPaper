@@ -1,4 +1,4 @@
-<form #editform='ngForm' (ngSubmit)="onEdit(editform)" *ngIf="article$|async as article">
+<form #editform='ngForm' (ngSubmit)="onCreate(editform)" >
     <div class="form-group">
         <input type="text" class="form-control" ngModel name="title" placeholder="Enter Title">
     </div>
@@ -11,30 +11,29 @@
     <div class="form-group">
         <input type="text" class="form-control" ngModel name="body" placeholder="Enter Body">
     </div>
-    <!--  <div class="form-group">
-
-        <input type="file" class="form-control-file" 
-        ngModel name="thumbnail_image">
-    </div>    
-  -->
-  <button type="button" class="btn btn-primary" (click)="createArt(newsa = article)">Create</button>
+    <div class="form-group">
+        <label>Image input</label>
+        <input type="file" (change) = "fileChangeEvent($event)" class="form-control-file" 
+        ngModel name="image_data">
+    </div>
+  <!--  <div ngbDropdown class="d-inline-block">
+        <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Toggle dropdown</button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button ngbDropdownItem ngModel name="category">International</button>
+            <button ngbDropdownItem ngModel name="category">National</button>
+            <button ngbDropdownItem ngModel name="category">Economy</button>
+            <button ngbDropdownItem ngModel name="category">Sports</button>
+            <button ngbDropdownItem ngModel name="category">Technology</button>
+        </div>
+    </div>-->
+    <select (change)="CatChoice($event)">
+        <option>Choose a Category</option>
+        <option value="International">International</option>
+        <option value="National">National</option>
+        <option value="Technology">Technology</option>
+        <option value="Sports">Sports</option>
+        <option value="Economy">Economy</option>
+    </select>
+  <button type="submit" class="btn btn-primary">Create</button>
 </form>
 
-<div class="test">
-    <ng-container *ngIf="article$|async as article">
-        <h3>{{article.category}}</h3>
-        <div class="card">
-            <!-- <p>id: {{article.id}}</p>
-                    <p>Update Date: {{article.update_date}}</p>-->
-            <img class="card-img-top" [src]="'data:'+ article.image_media_type + ';base64,' 
-                + article.image_data">
-            <div class="card-body">
-                <h4 class="card-title">{{article.title}}</h4>
-                <h5 class="card-title">{{article.subtitle}}</h5>
-                <p class="card-text">{{article.abstract}}</p>
-                <p class="card-text">{{article.body}}</p>
-                <p><i class="fa fa-user pr-2"></i>{{article.id_user}}</p>
-            </div>
-        </div>
-    </ng-container>
-</div>

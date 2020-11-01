@@ -5,6 +5,7 @@ import {Article} from '../article';
 import {NewsService} from '../src/services/news.service';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {Router} from '@angular/router';
+import {SearchPipe} from '../Pipes/search.pipe';
 
 @Component({
   selector: 'app-article-list',
@@ -17,6 +18,7 @@ export class ArticleListComponent implements OnInit {
   subtitle: any;
   loggedinUser: string;
   article$: Observable<Article>;
+  
   newsa: Article = {
     abstract: '',
     subtitle: '',
@@ -26,7 +28,7 @@ export class ArticleListComponent implements OnInit {
     thumbnail_image: '',
     thumbnail_media_type: ''
   };
-
+  searchText: '';
   constructor(private newsService: NewsService,
               private router: Router) { }
 
@@ -66,39 +68,6 @@ export class ArticleListComponent implements OnInit {
     });
   }
 
-  createArt() {
-    console.log('Creatiion Test');
-   /* this.newsa = {
-      abstract: 'German Beer is Awesome',
-      subtitle: 'You da bomb',
-      update_date: '',
-      category: 'Technology',
-      title: 'Nats is Awesome',
-      image_data: '',
-      image_media_type: '',
-      body: ''
-    };
-    console.log('New Article is ' + this.newsa);
-    this.newsService.createArticle(this.newsa).subscribe(data => {
-      console.log('Created');
-    }); */
-    this.router.navigateByUrl('/edit');
-    
-
-  }
-  // tslint:disable-next-line: typedef
-  Search() {
-    if (this.subtitle === '') {
-      this.ngOnInit();
-    } else {
-      this.articles$ = this.articles$.pipe(
-        filter( res => {
-          return res.article.subtitle.match(this.subtitle);
-        })
-
-      );
-    }
-  }
 
   loggedin() {
     this.loggedinUser =  localStorage.getItem('token');

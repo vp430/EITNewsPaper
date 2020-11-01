@@ -25,6 +25,7 @@ import { InternationalComponent } from './international/international.component'
 import { TechnologyComponent } from './technology/technology.component';
 import { EconomyComponent } from './economy/economy.component';
 import { ArticleCreateComponent } from './article-create/article-create.component';
+import { SearchPipe } from './Pipes/search.pipe';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { ArticleCreateComponent } from './article-create/article-create.componen
     InternationalComponent,
     TechnologyComponent,
     EconomyComponent,
-    ArticleCreateComponent
+    ArticleCreateComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
@@ -76,6 +78,9 @@ import { ArticleCreateComponent } from './article-create/article-create.componen
       },
       {
         path: 'edit', component: ArticleEditionComponent
+      },
+      {
+        path: 'create', component: ArticleCreateComponent
       }
     ]),
     BrowserAnimationsModule,
