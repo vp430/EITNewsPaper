@@ -6,7 +6,7 @@ import {NewsService} from '../src/services/news.service';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {Router} from '@angular/router';
 import {SearchPipe} from '../Pipes/search.pipe';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-article-list',
   templateUrl: './article-list.component.html',
@@ -18,6 +18,7 @@ export class ArticleListComponent implements OnInit {
   subtitle: any;
   loggedinUser: string;
   article$: Observable<Article>;
+  rem: boolean = false;
   
   newsa: Article = {
     abstract: '',
@@ -62,10 +63,42 @@ export class ArticleListComponent implements OnInit {
 
   deleteArt(article)
   {
-    console.log('Deleting article' + article.title);
-    this.newsService.deleteArticle(article).subscribe(data => {
-      console.log('Deleted');
-    });
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+    
+    swalWithBootstrapButtons.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, cancel!',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        swalWithBootstrapButtons.fire(
+          'Deleted!',
+          'Article has been deleted.',
+          'success'
+        );
+        console.log('Deleting article' + article.title);
+        this.newsService.deleteArticle(article).subscribe();
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Cancelled',
+          'The Article is Safe :)',
+          'error'
+        )
+      }
+    })
   }
 
 

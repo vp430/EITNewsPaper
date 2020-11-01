@@ -14,6 +14,7 @@ export class SportsComponent implements OnInit {
   articles$: Observable<Article[]>;
   subtitle: string;
   searchText: '';
+  loggedinUser: string;
   constructor(private newsService: NewsService,
               private router: Router) { }
 

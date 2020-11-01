@@ -1,49 +1,53 @@
-<form #editform='ngForm' (ngSubmit)="onEdit(editform,article)" *ngIf="article$|async as article">
-    <div class="form-group">
-        <input type="text" class="form-control" ngModel name="title" placeholder="Enter Title">
-    </div>
-    <div class="form-group">
-        <input type="text" class="form-control" ngModel name="subtitle" placeholder="Enter Subtitle">
-    </div>
-    <div class="form-group">
-        <input type="text" class="form-control" ngModel name="abstract" placeholder="Enter Abstract">
-    </div>
-    <div class="form-group">
-        <input type="text" class="form-control" ngModel name="body" placeholder="Enter Body">
-    </div>
-   <div class="form-group">
-        <label>Image input</label>
-        <input type="file" (change) = "fileChangeEvent($event,article)" class="form-control-file" 
-        ngModel name="image_data">
-    </div>
-    <select (change)="CatChoice($event,article)">
-        <option>Choose a Category</option>
-        <option value="International">International</option>
-        <option value="National">National</option>
-        <option value="Technology">Technology</option>
-        <option value="Sports">Sports</option>
-        <option value="Economy">Economy</option>
-    </select>   
-    <button type="submit" class="btn btn-primary">Edit</button>
-</form>
+<div class="main">
+    <br>
+    <div class="row">
+        <div class="col-1">
 
-
-
-<div class="test">
-    <ng-container *ngIf="article$|async as article">
-        <h3>{{article.category}}</h3>
-        <div class="card">
-            <!-- <p>id: {{article.id}}</p>
-                    <p>Update Date: {{article.update_date}}</p>-->
-            <img class="card-img-top" [src]="'data:'+ article.image_media_type + ';base64,' 
-                + article.image_data">
-            <div class="card-body">
-                <h4 class="card-title">{{article.title}}</h4>
-                <h5 class="card-title">{{article.subtitle}}</h5>
-                <p class="card-text">{{article.abstract}}</p>
-                <p class="card-text">{{article.body}}</p>
-                <p><i class="fa fa-user pr-2"></i>{{article.id_user}}</p>
+        </div>
+        <div class="col-5">
+            <h1>Enter Data</h1>
+            <form #editform='ngForm' (ngSubmit)="onEdit(editform,article)" *ngIf="article$|async as article">
+                <input type="text" class="form-control" ngModel name="title" placeholder={{article.title}}>
+                <br>                
+                <input type="text" class="form-control" ngModel name="subtitle" placeholder={{article.subtitle}}>
+                <br>
+                <input type="text" class="form-control" ngModel name="abstract" placeholder={{article.abstract}}>
+                <br>
+                <input type="text" class="form-control" ngModel name="body" placeholder={{article.body}}>
+                <br>
+               <div class="form-group">
+                    <label>Image input</label>
+                    <input type="file" (change) = "fileChangeEvent($event,article)" class="form-control-file" 
+                    ngModel name="image_data">
+                </div>
+                <select (change)="CatChoice($event,article)">
+                    <option>Choose a Category</option>
+                    <option value="International">International</option>
+                    <option value="National">National</option>
+                    <option value="Technology">Technology</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Economy">Economy</option>
+                </select>
+                <br>   
+                <button type="submit" class="btn btn-primary">Edit</button>
+            </form>
+        </div>
+        <div class="col-5">
+            <div class="main">
+                <ng-container *ngIf="article$|async as article">
+                    <h1 class="cate">{{article.category}}</h1>
+                            <img class="image1" [src]="'data:'+ article.image_media_type + ';base64,' 
+                            + article.image_data">
+                            <h1>{{article.title}}</h1>
+                            <h2>{{article.subtitle}}</h2>
+                            <p>{{article.abstract}}</p>
+                            <p>{{article.body}}</p>
+                            <p><i class="fa fa-user pr-2"></i>Article Written By {{article.id_user}}</p>
+                </ng-container>
             </div>
         </div>
-    </ng-container>
+        <div class="col-1">
+
+        </div>
+    </div>
 </div>

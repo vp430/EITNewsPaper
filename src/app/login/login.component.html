@@ -1,19 +1,17 @@
- <form #loginForm='ngForm'(ngSubmit)="onLogin(loginForm)">
-    <div class="form-group">
-      <label for="exampleInputEmail1">Email address</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-      required ngModel name="username" placeholder="Enter email">
-      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-    </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1"
+<div class="main">
+ <form class="form1" #loginForm='ngForm'(ngSubmit)="onLogin(loginForm)">
+    <!-- <div class="form-group">
+     class="form-control"
+    </div> -->
+    <input type="text" class="un " 
+      required ngModel name="username" placeholder="User Name">
+    <!-- <div class="form-group">
+      
+    </div> -->
+    <input type="password" class="pass" 
       ngModel name="passwd" placeholder="Password">
-    </div>
-    <div class="form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">Check me out</label>
-    </div>
-    <button type="submit" class="btn btn-primary" 
+      <br>
+    <button type="submit" class="submit"
     [disabled]="!loginForm.valid">Submit</button>
   </form>
+</div>

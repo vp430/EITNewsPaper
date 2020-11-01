@@ -13,7 +13,7 @@ export class NationalComponent implements OnInit {
 
   articles$: Observable<Article[]>;
   subtitle: string;
-
+  loggedinUser: string;
   searchText: '';
   constructor(private newsService: NewsService,
               private router: Router) { }

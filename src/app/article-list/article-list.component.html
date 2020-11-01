@@ -35,17 +35,19 @@
         </nav>
         <div class="row">
             <div class="col-4" *ngFor="let article of articles | search:searchText ">
-                <h3>{{article.category}}</h3>
+               
                 <div class="card">
+                    
                    <!-- <p>id: {{article.id}}</p>
                     <p>Update Date: {{article.update_date}}</p>--> 
                 <img class="card-img-top" [src]="'data:'+ article.thumbnail_media_type + ';base64,' 
                 + article.thumbnail_image" (click)="getArt(article)">
+                <h2>{{article.category}}</h2> <!-- Uppercase and Light Shade of Grey-->
                     <div class="card-body">
-                        <h4 class="card-title" (click)="getArt(article)">{{article.title}}</h4>
-                        <h5 class="card-title">{{article.subtitle}}</h5>
+                        <h3 class="card-title" (click)="getArt(article)">{{article.title}}</h3> <!--Bold-->
+                        <h4 class="card-title">{{article.subtitle}}</h4>
                         <p class="card-text">{{article.abstract}}</p>
-                        <p><i class="fa fa-user pr-2"></i>{{article.id_user}}</p>
+                        <p><i class="fa fa-user pr-2"></i>{{article.id_user}}</p> <!--Light SHade of Grey-->
                     </div>
                     <div *ngIf="loggedin()" class="card-bottom">
                         <div class="float-right  p-2"><button type="button" class="btn btn-primary" (click)="deleteArt(article)">REMOVE</button></div>
