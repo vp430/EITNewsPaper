@@ -15,11 +15,22 @@ export class SportsComponent implements OnInit {
   subtitle: string;
   searchText: '';
   loggedinUser: string;
+  apk: string;
+  token: string;
   constructor(private newsService: NewsService,
               private router: Router) { }
 
   ngOnInit(): void {
     console.log('hello, getting articles');
+    console.log('Token is ',localStorage.getItem('token'));
+    console.log('apikey is ',localStorage.getItem('apikey'));
+    this.token = localStorage.getItem('token');
+    if(this.token)
+    {
+      console.log('Hallo ha ha');
+      this.apk = localStorage.getItem('apikey');
+      this.newsService.setUserApiKey(this.apk);
+    }
     this.articles$ = this.newsService.getArticles();
   }
 

@@ -1,32 +1,4 @@
-<!--
-<ng-container *ngIf = "articles$|async as articles">
-    <div *ngFor="let article of articles">
-        <p>
-            ID: {{ article.id }}
-        </p>
-        <p>
-            Abstract: {{article.abstract}}
-        </p>
-        <p>
-            Subtitle: {{article.subtitle}}
-        </p>
-        <p>
-            Category: {{article.category}}
-        </p>
-        <p>
-            Title: {{article.title}}
-        </p>
-        <p>
-            Update: {{article.update_date}}
-        </p>
-    </div>
-</ng-container>
--->
-
-
-<!-- Natalia theme test
-<div *ngIf="loggedin()" class="float-left  p-2"><button type="button" class="btn btn-primary"><a routerLink="/create"></a>CREATE</button></div>-->
-<a class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><a routerLink="/create">Create Article</a></a>
+<a class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" *ngIf="loggedin()"><a routerLink="/create">Create Article</a></a>
 <div class="test">
     <ng-container *ngIf = "articles$|async as articles">
         <nav class="navbar">
@@ -35,25 +7,21 @@
         </nav>
         <div class="row">
             <div class="col-4" *ngFor="let article of articles | search:searchText ">
-               
-                <div class="card">
-                    
-                   <!-- <p>id: {{article.id}}</p>
-                    <p>Update Date: {{article.update_date}}</p>--> 
-                <img class="card-img-top" [src]="'data:'+ article.thumbnail_media_type + ';base64,' 
-                + article.thumbnail_image" (click)="getArt(article)">
-                <h2>{{article.category}}</h2> <!-- Uppercase and Light Shade of Grey-->
+                <div class="main">
+                    <img class="image1" [src]="'data:'+ article.thumbnail_media_type + ';base64,' 
+                    + article.thumbnail_image" (click)="getArt(article)">
+                    <h2 class="cat">{{article.category}}</h2> 
                     <div class="card-body">
-                        <h3 class="card-title" (click)="getArt(article)">{{article.title}}</h3> <!--Bold-->
+                        <h3 class="title" (click)="getArt(article)">{{article.title}}</h3> 
                         <h4 class="card-title">{{article.subtitle}}</h4>
                         <p class="card-text">{{article.abstract}}</p>
-                        <p><i class="fa fa-user pr-2"></i>{{article.id_user}}</p> <!--Light SHade of Grey-->
-                    </div>
+                        <p class="user"><i class="fa fa-user pr-2"></i>{{article.id_user}}</p> 
+                    </div>    
                     <div *ngIf="loggedin()" class="card-bottom">
                         <div class="float-right  p-2"><button type="button" class="btn btn-primary" (click)="deleteArt(article)">REMOVE</button></div>
                         <div class="float-right  p-2"><button type="button" class="btn btn-primary" (click)="updateArt(article)" >EDIT</button></div>
-                       <!-- <div class="float-right  p-2"><button type="button" class="btn btn-primary" (click)="getArt(article)">VIEW</button></div>-->
-                    </div>
+                    <!-- <div class="float-right  p-2"><button type="button" class="btn btn-primary" (click)="getArt(article)">VIEW</button></div>-->
+                    </div>    
                 </div>    
             </div>
         </div>

@@ -54,6 +54,7 @@ export class ArticleEditionComponent implements OnInit {
         article.subtitle = editform.value.subtitle;
         article.abstract = editform.value.abstract;
         article.body = editform.value.body;
+        console.log('Edited One is',article);
         this.newsService.updateArticle(article).subscribe();
       } else if (result.isDenied) {
         Swal.fire('Changes are not saved', '', 'info')

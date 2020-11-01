@@ -17,17 +17,23 @@ export class ArticleCreateComponent implements OnInit {
   art: Article = {
     abstract: '',
     subtitle: '',
-    update_date: '',
     category: '',
     title: '',
-    thumbnail_image: '',
-    thumbnail_media_type: '',
-    image_media_type: '',
-    image_data: ''
+    image_data: '',
+    image_media_type: ''
+  };
+  art1: Article = {
+    abstract: 'asdvasjdv',
+    subtitle: 'fshdhfv',
+    category: 'International',
+    title: 'LIES',
+    image_data: '',
+    image_media_type: ''
   };
   cardImageBase64: any;
   isImageSaved: boolean;
   ngOnInit(): void {
+  //  this.newsService.createArticle(this.art1).subscribe();
   }
 
   onCreate(editform: NgForm) {
@@ -35,7 +41,11 @@ export class ArticleCreateComponent implements OnInit {
     this.art.subtitle = editform.value.subtitle;
     this.art.abstract = editform.value.abstract;
     this.art.body = editform.value.body;
-    console.log(' Category is ' + this.art.category)
+    console.log(' Category is ' + this.art.category);
+    console.log('Article before sending is ',this.art);
+   /* this.newsService.createArticle(this.art).subscribe(
+      data => {console.log('Response ',data);}
+    );*/
     this.newsService.createArticle(this.art).subscribe();
     Swal.fire({
       position: 'top-end',

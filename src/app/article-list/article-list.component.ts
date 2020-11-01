@@ -19,7 +19,8 @@ export class ArticleListComponent implements OnInit {
   loggedinUser: string;
   article$: Observable<Article>;
   rem: boolean = false;
-  
+  apk: string;
+  token: string;
   newsa: Article = {
     abstract: '',
     subtitle: '',
@@ -35,6 +36,15 @@ export class ArticleListComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('hello, getting articles');
+    console.log('Token is ',localStorage.getItem('token'));
+    console.log('apikey is ',localStorage.getItem('apikey'));
+    this.token = localStorage.getItem('token');
+    if(this.token)
+    {
+      console.log('Hallo ha ha');
+      this.apk = localStorage.getItem('apikey');
+      this.newsService.setUserApiKey(this.apk);
+    }
     this.articles$ = this.newsService.getArticles();
  
     /*  this.http.post<any>('http://sanger.dia.fi.upm.es/pui-rest-news/login', 
@@ -83,7 +93,7 @@ export class ArticleListComponent implements OnInit {
       if (result.isConfirmed) {
         swalWithBootstrapButtons.fire(
           'Deleted!',
-          'Article has been deleted.',
+          'Article has been deleted. Please Reload the page',
           'success'
         );
         console.log('Deleting article' + article.title);

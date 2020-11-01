@@ -1,0 +1,23 @@
+.image1 {
+    width: 450px;
+    height: 300px;
+}
+.cat {
+    color: gray;
+    text-transform: capitalize;
+}
+.title {
+    font-weight: 700;
+}
+.user {
+    color: gray;
+}
+
+.main {
+    background-color:  whitesmoke;
+    width: 450px;
+    height: 700px;
+    margin: 7em auto;
+    border-radius: 1.5em;
+    box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+}

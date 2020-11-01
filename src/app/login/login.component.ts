@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   constructor(private loginService: LoginService,
               private router: Router) { }
 
+  apikey: string;            
   log: boolean = false;
   ngOnInit(): void {
     /*this.loginService.login('us_2_2', '2422').subscribe(data => {
@@ -20,28 +21,40 @@ export class LoginComponent implements OnInit {
     }); */
   }
 
-  onLogin(loginForm: NgForm){
+  onLogin(loginForm: NgForm) {
+    console.log('processing');
     this.loginService.login(loginForm.value.username, loginForm.value.passwd).subscribe(
-      res => {this.log = true; }
-    );
-    const token = loginForm.value.username;
-    if(this.log){
-      Swal.fire(
-        'Welcome!',
-        'You are successfully logged in!',
-        'success'
-      );
-      localStorage.setItem('token', token);
-      this.router.navigate(['/']);
-    }
-    else{
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'You have entered incorrect details',
-      });
 
-    }
+      data => {
+        this.apikey = data.apikey;
+        this.log = true;
+        console.log('Data is', data);
+        console.log('API key is:', data.apikey);
+        console.log('Apikey is ' + this.apikey);
+        const token = loginForm.value.username;
+        if (this.log) {
+          Swal.fire(
+            'Welcome!',
+            'You are successfully logged in!',
+            'success'
+          );
+          const ap = this.apikey;
+          localStorage.setItem('token', token);
+          localStorage.setItem('apikey', ap);
+          this.router.navigate(['/']);
+        }
+        else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'You have entered incorrect details',
+          });
+
+        }
+      }
+
+    );
+
   }
 
 }

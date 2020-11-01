@@ -1,4 +1,4 @@
-<a class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><a routerLink="/create">Create Article</a></a>
+<a class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" *ngIf="loggedin()"><a routerLink="/create">Create Article</a></a>
 <div class="test">
     <ng-container *ngIf = "articles$|async as articles">
         <nav class="navbar">
@@ -6,24 +6,22 @@
             placeholder="Search...">
         </nav>
         <div class="row">
-            <div class="col-4" *ngFor="let article of articles | search:searchText | filter:'International':'category' ">
-                <h3>{{article.category}}</h3>
-                <div class="card">
-                   <!-- <p>id: {{article.id}}</p>
-                    <p>Update Date: {{article.update_date}}</p>--> 
-                <img class="card-img-top" [src]="'data:'+ article.thumbnail_media_type + ';base64,' 
-                + article.thumbnail_image" (click)="getArt(article)">
+            <div class="col-4" *ngFor="let article of articles | search:searchText | filter:'International':'category'">
+                <div class="main">
+                    <img class="image1" [src]="'data:'+ article.thumbnail_media_type + ';base64,' 
+                    + article.thumbnail_image" (click)="getArt(article)">
+                    <h2 class="cat">{{article.category}}</h2> 
                     <div class="card-body">
-                        <h4 class="card-title" (click)="getArt(article)">{{article.title}}</h4>
-                        <h5 class="card-title">{{article.subtitle}}</h5>
+                        <h3 class="title" (click)="getArt(article)">{{article.title}}</h3> 
+                        <h4 class="card-title">{{article.subtitle}}</h4>
                         <p class="card-text">{{article.abstract}}</p>
-                        <p><i class="fa fa-user pr-2"></i>{{article.id_user}}</p>
-                    </div>
+                        <p class="user"><i class="fa fa-user pr-2"></i>{{article.id_user}}</p> 
+                    </div>    
                     <div *ngIf="loggedin()" class="card-bottom">
                         <div class="float-right  p-2"><button type="button" class="btn btn-primary" (click)="deleteArt(article)">REMOVE</button></div>
                         <div class="float-right  p-2"><button type="button" class="btn btn-primary" (click)="updateArt(article)" >EDIT</button></div>
-                       <!-- <div class="float-right  p-2"><button type="button" class="btn btn-primary" (click)="getArt(article)">VIEW</button></div>-->
-                    </div>
+                    <!-- <div class="float-right  p-2"><button type="button" class="btn btn-primary" (click)="getArt(article)">VIEW</button></div>-->
+                    </div>    
                 </div>    
             </div>
         </div>
